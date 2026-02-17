@@ -24,7 +24,7 @@ public class Product {
     @ManyToMany
     @JoinTable(name = "tb_product_category",
     joinColumns = @JoinColumn(name ="product_id"),
-        inverseJoinColumns = @JoinColumn(name = "caterory_id"))
+        inverseJoinColumns = @JoinColumn(name = "category_id"))
     private Set<Category> categories = new HashSet<>();
 
     @OneToMany(mappedBy = "id.product")
@@ -66,30 +66,5 @@ public class Product {
 
     public Double getPrice() {
         return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
-    }
-
-    public String getImgUrl() {
-        return imgUrl;
-    }
-
-    public void setImgUrl(String imgUrl) {
-        this.imgUrl = imgUrl;
-    }
-
-    public Set<Category> getCategories() {
-        return categories;
-    }
-
-
-    public Set<OrderItem> getItems() {
-        return items;
-    }
-
-    public List<Order>getOrders(){
-        return items.stream().map(x -> x.getOrder()).toList();
     }
 }
